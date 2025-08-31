@@ -502,3 +502,51 @@ loadingStyle.textContent = `
     }
 `;
 document.head.appendChild(loadingStyle);
+
+// Mobile viewport height fix
+function setVH() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    
+    // Also update hero section height specifically for mobile
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        const mobileHeight = window.innerHeight - 70; // Subtract navbar height
+        hero.style.minHeight = `${mobileHeight}px`;
+    }
+}
+
+// Set initial height
+setVH();
+
+// Update on resize and orientation change
+window.addEventListener('resize', setVH);
+window.addEventListener('orientationchange', setVH);
+
+// Additional mobile-specific fixes
+function applyMobileFixes() {
+    const isMobile = window.innerWidth <= 768;
+    const hero = document.querySelector('.hero');
+    
+    if (isMobile && hero) {
+        // Force mobile layout
+        hero.style.alignItems = 'flex-start';
+        hero.style.justifyContent = 'center';
+        hero.style.paddingTop = '90px';
+        hero.style.paddingBottom = '40px';
+        
+        // Ensure content is visible
+        const heroContent = hero.querySelector('.hero-content');
+        if (heroContent) {
+            heroContent.style.display = 'flex';
+            heroContent.style.flexDirection = 'column';
+            heroContent.style.justifyContent = 'center';
+            heroContent.style.alignItems = 'center';
+            heroContent.style.textAlign = 'center';
+        }
+    }
+}
+
+// Apply mobile fixes on load and resize
+document.addEventListener('DOMContentLoaded', applyMobileFixes);
+window.addEventListener('resize', applyMobileFixes);
