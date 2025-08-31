@@ -138,11 +138,13 @@ body {
 /* Hero Section */
 .hero {
     min-height: 100vh;
+    min-height: calc(100vh - 70px); /* Account for fixed navbar */
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     position: relative;
     overflow: hidden;
+    padding: 70px 0 20px 0; /* Add top padding to account for fixed navbar */
 }
 
 .hero::before {
@@ -825,14 +827,50 @@ body {
         left: 0;
     }
     
+    /* Hero section mobile improvements */
+    .hero {
+        min-height: 100vh;
+        min-height: calc(100vh - 70px); /* Account for fixed navbar */
+        padding: 90px 0 40px 0; /* Increase padding for mobile */
+        align-items: flex-start; /* Align to top on mobile */
+        justify-content: center; /* Center content vertically */
+    }
+    
+    .hero-container {
+        padding: 0 15px; /* Reduce side padding on mobile */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: calc(100vh - 70px); /* Ensure container takes full available height */
+    }
+    
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 2rem;
+        padding-top: 2rem; /* Add top padding for content */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     
     .hero-title {
         font-size: 2.5rem;
+        margin-bottom: 1.5rem; /* Increase bottom margin */
+        line-height: 1.1; /* Tighter line height for mobile */
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem; /* Slightly smaller for mobile */
+        margin-bottom: 2rem; /* Increase bottom margin */
+        line-height: 1.3; /* Better line height for mobile */
+    }
+    
+    .hero-description {
+        font-size: 1rem; /* Slightly smaller for mobile */
+        margin-bottom: 2.5rem; /* Increase bottom margin */
+        line-height: 1.5; /* Better line height for mobile */
     }
     
     .about-content {
@@ -869,8 +907,43 @@ body {
 }
 
 @media (max-width: 480px) {
+    /* Hero section extra small mobile improvements */
+    .hero {
+        padding: 100px 0 50px 0; /* Even more padding for very small screens */
+        min-height: 100vh;
+        min-height: calc(100vh - 70px); /* Account for fixed navbar */
+    }
+    
+    .hero-container {
+        padding: 0 10px; /* Minimal side padding */
+        min-height: calc(100vh - 70px); /* Ensure container takes full available height */
+    }
+    
+    .hero-content {
+        padding-top: 1rem; /* Reduce top padding for very small screens */
+        gap: 1.5rem; /* Reduce gap */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
     .hero-title {
         font-size: 2rem;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        line-height: 1.4;
     }
     
     .section-title {
